@@ -1,65 +1,85 @@
-import Image from "next/image";
+import Link from "next/link";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="max-w-5xl mx-auto p-6 pt-10">
+      <div className="animate-fade-up space-y-12">
+        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-accent-subtle-strong via-card to-background border border-accent-border p-8 md:p-12">
+          <div className="absolute top-0 right-0 w-72 h-72 bg-accent/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+          <div className="absolute bottom-0 left-0 w-48 h-48 bg-accent/8 rounded-full blur-2xl translate-y-1/2 -translate-x-1/4" />
+
+          <div className="relative space-y-6 max-w-2xl">
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight leading-tight">
+              Sparen leicht <br />
+              gemacht mit <span className="text-accent">SaveSmart</span>
+            </h1>
+            <p className="text-muted text-lg max-w-lg leading-relaxed">
+              Verwalte deine Sparziele, verfolge jeden Schritt und erreiche deine Ziele – mit Stil und Übersicht.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <Link
+                href="/goals"
+                className="inline-flex items-center gap-2 bg-accent hover:bg-accent-light text-white font-medium text-sm px-6 py-3 rounded-xl transition-all duration-200 hover:shadow-[0_0_20px_rgba(139,92,246,0.35)] active:scale-95"
+              >
+                Zu meinen Zielen
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </Link>
+              <Link
+                href="/about"
+                className="inline-flex items-center gap-2 bg-card border border-border hover:border-accent-border text-foreground font-medium text-sm px-6 py-3 rounded-xl transition-all duration-200"
+              >
+                Mehr erfahren
+              </Link>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          {[
+            {
+              title: "Sparziele erstellen",
+              desc: "Definiere deine Ziele und verfolge jeden Euro, den du sparst.",
+              icon: (
+                <svg className="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                </svg>
+              ),
+            },
+            {
+              title: "Fortschritt verfolgen",
+              desc: "Sieh auf einen Blick, wie nah du deinem Ziel schon bist.",
+              icon: (
+                <svg className="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                </svg>
+              ),
+            },
+            {
+              title: "Motiviert bleiben",
+              desc: "Erreiche deine Sparziele mit Spaß und Übersicht.",
+              icon: (
+                <svg className="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                </svg>
+              ),
+            },
+          ].map((feature, i) => (
+            <div
+              key={feature.title}
+              className="bg-card border border-border rounded-2xl p-6 hover:border-accent-border transition-all duration-200 group"
+              style={{ animationDelay: `${i * 0.1}s` }}
+            >
+              <div className="w-10 h-10 rounded-xl bg-accent-subtle-strong flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-200">
+                {feature.icon}
+              </div>
+              <h3 className="text-sm font-semibold mb-2 text-foreground">{feature.title}</h3>
+              <p className="text-muted text-xs leading-relaxed">{feature.desc}</p>
+            </div>
+          ))}
         </div>
-      </main>
-    </div>
+      </div>
+    </main>
   );
 }
