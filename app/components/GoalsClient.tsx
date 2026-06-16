@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import SearchBar from "./SearchBar";
+import GoalInfoPopup from "./GoalInfoPopup";
 import type { SavingGoal } from "@/types/SavingGoal";
 import Link from "next/link";
 import { deleteGoal, updateGoal, createGoal } from "@/actions";
@@ -48,6 +49,8 @@ export default function GoalsClient({ goals }: GoalsClientProps) {
   const [newTargetAmount, setNewTargetAmount] = useState("");
   const [newCurrentAmount, setNewCurrentAmount] = useState("");
   const [newCategoryId, setNewCategoryId] = useState("");
+
+  const [selectedGoal, setSelectedGoal] = useState<SavingGoal | null>(null);
 
   const filteredGoals = goals.filter((goal) => goal.title.toLowerCase().includes(searchTerm.toLowerCase()));
 
@@ -219,11 +222,12 @@ export default function GoalsClient({ goals }: GoalsClientProps) {
                         </p>
                       </div>
 
-                      <div className="w-8 h-8 rounded-lg bg-accent-subtle flex items-center justify-center shrink-0 group-hover:bg-accent-subtle-strong transition-colors">
-                        <svg className="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"/>
-                        </svg>
-                      </div>
+<div className="w-8 h-8 rounded-lg bg-accent-subtle flex items-center justify-center shrink-0 group-hover:bg-accent-subtle-strong transition-colors cursor-pointer"
+                       onClick={() => setSelectedGoal(goal)}>
+                         <svg className="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"/>
+                         </svg>
+                       </div>
                     </div>
                     <div className="flex-1">
                       <div className="flex justify-between text-sm mb-2">
@@ -262,11 +266,12 @@ export default function GoalsClient({ goals }: GoalsClientProps) {
                     </div>
                   </>
                 )}
-              </div>
-            );
-          })}
-        </div>
-      )}
-    </>
-  );
+</div>
+        );
+            })}
+          </div>
+        )}
+        <GoalInfoPopup goal={selectedGoal} onClose={() => setSelectedGoal(null)} />
+      </>
+    );
 }
