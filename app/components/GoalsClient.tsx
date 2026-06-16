@@ -228,10 +228,10 @@ export default function GoalsClient({ goals }: GoalsClientProps) {
                     <div className="flex-1">
                       <div className="flex justify-between text-sm mb-2">
                         <span className="text-foreground font-medium">
-                          {goal.currentAmount.toLocaleString()} €
+                          {goal.currentAmount.toLocaleString("de-DE")} €
                         </span>
                         <span className="text-muted">
-                          / {goal.targetAmount.toLocaleString()} €
+                          / {goal.targetAmount.toLocaleString("de-DE")} €
                         </span>
                       </div>
                       <div className="w-full bg-surface rounded-full h-2.5 overflow-hidden">
@@ -243,7 +243,7 @@ export default function GoalsClient({ goals }: GoalsClientProps) {
                         </span>
                         {remaining > 0 && (
                           <span className="text-xs text-muted">
-                            {remaining.toLocaleString()} € übrig
+                            {remaining.toLocaleString("de-DE")} € übrig
                           </span>
                         )}
                       </div>
