@@ -26,12 +26,6 @@ export default function HomePage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </Link>
-              <Link
-                href="/about"
-                className="inline-flex items-center gap-2 bg-card border border-border hover:border-accent-border text-foreground font-medium text-sm px-6 py-3 rounded-xl transition-all duration-200"
-              >
-                Mehr erfahren
-              </Link>
             </div>
           </div>
         </div>
@@ -55,6 +49,7 @@ export default function HomePage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                 </svg>
               ),
+              href: "/fortschritt",
             },
             {
               title: "Motiviert bleiben",
@@ -65,19 +60,34 @@ export default function HomePage() {
                 </svg>
               ),
             },
-          ].map((feature, i) => (
-            <div
-              key={feature.title}
-              className="bg-card border border-border rounded-2xl p-6 hover:border-accent-border transition-all duration-200 group"
-              style={{ animationDelay: `${i * 0.1}s` }}
-            >
-              <div className="w-10 h-10 rounded-xl bg-accent-subtle-strong flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-200">
-                {feature.icon}
+          ].map((feature, i) =>
+            feature.href ? (
+              <Link
+                key={feature.title}
+                href={feature.href}
+                className="bg-card border border-border rounded-2xl p-6 hover:border-accent-border transition-all duration-200 group"
+                style={{ animationDelay: `${i * 0.1}s` }}
+              >
+                <div className="w-10 h-10 rounded-xl bg-accent-subtle-strong flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-200">
+                  {feature.icon}
+                </div>
+                <h3 className="text-sm font-semibold mb-2 text-foreground">{feature.title}</h3>
+                <p className="text-muted text-xs leading-relaxed">{feature.desc}</p>
+              </Link>
+            ) : (
+              <div
+                key={feature.title}
+                className="bg-card border border-border rounded-2xl p-6 hover:border-accent-border transition-all duration-200 group"
+                style={{ animationDelay: `${i * 0.1}s` }}
+              >
+                <div className="w-10 h-10 rounded-xl bg-accent-subtle-strong flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-200">
+                  {feature.icon}
+                </div>
+                <h3 className="text-sm font-semibold mb-2 text-foreground">{feature.title}</h3>
+                <p className="text-muted text-xs leading-relaxed">{feature.desc}</p>
               </div>
-              <h3 className="text-sm font-semibold mb-2 text-foreground">{feature.title}</h3>
-              <p className="text-muted text-xs leading-relaxed">{feature.desc}</p>
-            </div>
-          ))}
+            )
+          )}
         </div>
       </div>
     </main>
