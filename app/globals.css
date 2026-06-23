@@ -3,6 +3,32 @@
 :root {
   --background: #0f0f14;
   --foreground: #f4f4f6;
+  color-scheme: dark;
+}
+
+html[data-theme="light"] {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --color-card: #ffffff;
+  --color-card-hover: #f1f5f9;
+  --color-accent: #7c3aed;
+  --color-accent-light: #8b5cf6;
+  --color-accent-50: #ede9fe;
+  --color-accent-100: #ddd6fe;
+  --color-accent-200: #c4b5fd;
+  --color-accent-300: #a78bfa;
+  --color-accent-400: #8b5cf6;
+  --color-accent-500: #7c3aed;
+  --color-accent-600: #6d28d9;
+  --color-accent-700: #5b21b6;
+  --color-accent-subtle: rgba(124, 58, 237, 0.08);
+  --color-accent-subtle-strong: rgba(124, 58, 237, 0.14);
+  --color-accent-border: rgba(124, 58, 237, 0.28);
+  --color-accent-glow: rgba(124, 58, 237, 0.22);
+  --color-border: #e2e8f0;
+  --color-muted: #64748b;
+  --color-surface: #f1f5f9;
+  color-scheme: light;
 }
 
 @theme inline {

@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+import { cookies } from "next/headers";
+import ThemeToggle from "./components/ThemeToggle";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,14 +21,18 @@ export const metadata: Metadata = {
   description: "Verwalte deine Sparziele und behalte deinen Fortschritt im Blick.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = await cookies();
+  const initialTheme = cookieStore.get("theme")?.value === "light" ? "light" : "dark";
+
   return (
     <html
       lang="de"
+      data-theme={initialTheme}
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
@@ -40,7 +46,7 @@ export default function RootLayout({
               </div>
               SaveSmart
             </Link>
-            <div className="flex gap-8">
+            <div className="flex gap-8 items-center">
               <Link href="/" className="text-sm text-foreground hover:text-accent transition-colors font-medium">
                 Start
               </Link>
@@ -50,6 +56,7 @@ export default function RootLayout({
               <Link href="/about" className="text-sm text-muted hover:text-accent transition-colors">
                 Über die App
               </Link>
+              <ThemeToggle initialTheme={initialTheme} />
             </div>
           </div>
         </nav>
